@@ -7,6 +7,8 @@ import {
   Button,
   Input
 } from 'reactstrap';
+import UserBubble from './UserBubble';
+import { Link } from 'react-router-dom'
 
 class TopNav extends Component{
 
@@ -21,19 +23,23 @@ class TopNav extends Component{
 
   _onSubmit = (e) => {
     e.preventDefault()
+    this.props.login(this.state, this.props.history)
   }
 
   render(){
-
     return (
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">Travel Planner</NavbarBrand>
+        <NavbarBrand tag={Link} to="/" >Travel Planner</NavbarBrand>
           <Nav className="ml-auto" navbar>
-            <Form onSubmit={this._onSubmit}>
-              <Input onChange={this._onChange} value={this.state.email} name="email" type='text' placeholder='email' />{' '}
-              <Input onChange={this._onChange} value={this.state.password} name="password" type='text' placeholder='password' />{' '}
-              <Button type='submit'>Sign in</Button>            
-            </Form>
+            {this.props.loggedIn ?
+              <UserBubble />
+            :
+              <Form onSubmit={this._onSubmit}>
+                {this.props.loginError && <p>Email and/or password is incorrect</p>}
+                <Input onChange={this._onChange} value={this.state.email} name="email" type='text' placeholder='email' />{' '}
+                <Input onChange={this._onChange} value={this.state.password} name="password" type='text' placeholder='password' />{' '}
+                <Button type='submit'>Sign in</Button>            
+              </Form>}
           </Nav>
       </Navbar>
     )

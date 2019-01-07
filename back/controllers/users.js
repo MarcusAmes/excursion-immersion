@@ -26,6 +26,8 @@ module.exports = {
             res.sendStatus(401)
           }
         })
+      } else {
+        res.sendStatus(401)
       }
     })
   },
