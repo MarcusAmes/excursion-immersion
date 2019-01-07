@@ -7,6 +7,10 @@ exports.up = function(knex, Promise) {
       .inTable('users')
       .notNullable()
       .onDelete('CASCADE');
+    table.string('title');
+    table.string('destination');
+    table.integer('budget')
+    .defaultTo(null);
     table.timestamps(true, true);
   })
 };
