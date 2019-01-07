@@ -6,10 +6,6 @@ const port = process.env.PORT || 8000;
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-require('./config/sessions')(app);
-
-app.set('view engine', 'ejs');
-
 var routes_setter = require('./config/routes.js');
 routes_setter(app);
 
