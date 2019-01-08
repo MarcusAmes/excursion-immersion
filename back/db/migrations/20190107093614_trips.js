@@ -11,6 +11,7 @@ exports.up = function(knex, Promise) {
     table.string('destination');
     table.integer('budget')
     .defaultTo(null);
+    table.text('img_url')
     table.timestamps(true, true);
   })
 };

@@ -49,19 +49,18 @@ export const addTrip = (trip) => dispatch => {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(res => res.json())
-    .then(response => {
-      console.log(response);
-      
-      dispatch(
-        addTripAction(response)
-      )
     })
-    .catch(err =>
-      dispatch(
-        addTripErrorAction()
+      .then(res => res.json())
+      .then(response => {
+        dispatch(
+          addTripAction(response)
+        )
+      })
+      .catch(err =>
+        dispatch(
+          addTripErrorAction()
+        )
       )
-    )
 }
 
 export const removeTrip = (id) => dispatch => {

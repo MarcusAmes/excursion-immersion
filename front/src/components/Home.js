@@ -19,13 +19,13 @@ componentDidMount() {
     
     return (
       <Container>
-        <Row>
-          <Col xl="8">
-            {tripsList}
-          </Col>
+        <Row>   
           <Col xl="4">
             <AddTripModalContainer />
           </Col>
+        </Row>
+        <Row>
+          {tripsList}
         </Row>
 
       </Container>

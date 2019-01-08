@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import apiParams from '../google'
+
 import {
   Button,
   Modal,
@@ -25,13 +27,31 @@ class AddTripModal extends Component {
 
   _onSubmit = (e) => {
     e.preventDefault();
-    let newTrip = {user_id: this.props.id};
+    let newTrip = {
+      user_id: this.props.id,
+      img_url: "lBL7rSRaNGs"
+    };
     for (let key in this.state) {
       if (key !== 'modal' && ((key !== 'budget' && this.state[key].trim().length) || this.state[key] > 0)) {
         newTrip[key] = this.state[key]
       }
     }
-    this.props.addTrip(newTrip)
+    this.toggle({target: {name: null}})
+    fetch(`https://api.unsplash.com/search/photos?client_id=${apiParams.key}&page=1&query=${this.state.destination}`)
+    .then(res => res.json())
+    .then(image => {
+      console.log(image);
+      
+      for (let i = 2; i < image.results.length; i++) {
+        console.log(image.results[i].width / image.results[i].height);
+        
+        if (image.results[i].width / image.results[i].height > 1.2) {
+          newTrip.img_url = image.results[i].id
+          continue;
+        }
+      }
+      this.props.addTrip(newTrip)
+    })
   }
 
   _onChange = ({target}) => {

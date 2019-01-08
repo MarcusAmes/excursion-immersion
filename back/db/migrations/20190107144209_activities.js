@@ -7,7 +7,7 @@ exports.up = function(knex, Promise) {
       .inTable('trips')
       .notNullable()
       .onDelete('CASCADE');
-    table.string('title');
+    table.string('name');
     table.string('type');
     table.string('start');
     table.string('end').defaultTo(null);

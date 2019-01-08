@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Activity from './Activity';
-import { Row, Col, Container, Button } from 'reactstrap'
+import { Row, Container, Col} from 'reactstrap'
+import AddActivityModalContainer from '../containers/AddActivityModalContainer';
+import moment from 'moment'
+import { Pie } from 'react-chartjs-2'
 
 class ViewTrip extends Component {
 
@@ -12,36 +15,49 @@ class ViewTrip extends Component {
     console.log(target.name);
   }
 
-  render() { 
+  render() {     
     if (this.props.activitiesLoading) {
       return <div>Loading...</div>
     }  
 
     const sortedByDate = this.props.activities.sort((a, b) => {
-      return a.start > b.start
+      return moment(a.start).isBefore(b.start) ? -1 : !moment(a.start).isBefore(b.start) ? 1 : 0
     })
-
     const ActivityList = sortedByDate.map(activity => <Activity key={activity.id} activity={activity}/>)
     
+    const data = {
+      labels: [
+          'Budget',
+          'Green',
+          'Yellow'
+        ],
+        datasets: [{
+          data: [300, 50, 100],
+          backgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56'
+          ],
+          hoverBackgroundColor: [
+            '#FF6384',
+            '#36A2EB',
+            '#FFCE56'
+          ]
+        }]
+    }
     return (
       <Container>
-        <Row style={{marginBottom: "20px", marginTop: "10px"}}>
-          <Col>
-            <Button onClick={this._onClick} name="flight">Add Flight</Button>
-          </Col>
-          <Col>
-            <Button onClick={this._onClick} name="hotel">Add Hotel</Button>
-          </Col>
-          <Col>
-            <Button onClick={this._onClick} name="car">Add Rental Car</Button>
-          </Col>
-          <Col>
-            <Button onClick={this._onClick} name="custom">Add Custom</Button>
-          </Col>
-        </Row>
+        <div style={{marginBottom: "20px", marginTop: "10px"}}>
+          <AddActivityModalContainer trip_id={this.props.match.params.id} />
+        </div>
 
         <Row>
-          {ActivityList}
+          <Col xl="8">
+            {ActivityList}
+          </Col>
+          <Col xl="4">
+            <Pie data={data}/>
+          </Col>
         </Row>
       </Container>
     )

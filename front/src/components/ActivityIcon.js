@@ -4,7 +4,7 @@ import {
   FaCar,
   FaBriefcase,
   FaHotel,
-  FaClock
+  FaCalendarCheck
 } from "react-icons/fa";
 
 
@@ -26,7 +26,7 @@ function ActivityIcon(props) {
       icon = <FaPlane size="4em" color="white"/>
       break;
     case "car":
-      style.backgroundColor = "lightRed"
+      style.backgroundColor = "red"
       icon = <FaCar size="4em" color="white"/>
       break;
     case "business":
@@ -38,7 +38,7 @@ function ActivityIcon(props) {
       icon = <FaHotel size="4em" color="white"/>
       break;
     default:
-      icon = <FaClock size="4em" color="white"/>;
+      icon = <FaCalendarCheck size="4em" color="white"/>;
       break;
   }
   return (
