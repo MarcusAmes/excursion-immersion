@@ -8,7 +8,7 @@ const loginError = () => ({ type: LOGIN_ERROR })
 
 //Thunks
 
-export const login = (user) => dispatch => {
+export const login = (user, history) => dispatch => {
   return fetch('http://localhost:8000/users/login', {
       method: 'POST',
       body: JSON.stringify(user),
@@ -21,6 +21,7 @@ export const login = (user) => dispatch => {
       dispatch(
         loginSuccess(response)
       )
+      history.push('/home')
     })
     .catch(err => {
       dispatch(

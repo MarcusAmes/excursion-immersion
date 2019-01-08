@@ -1,5 +1,6 @@
-//Update the name of the controller below and rename the file.
 const users = require("../controllers/users.js")
+const trips = require("../controllers/trips.js")
+
 module.exports = function(app){
 
   //LOGIN
@@ -7,6 +8,11 @@ module.exports = function(app){
     app.get('/users/:id', users.one);
     app.post('/users/login', users.login)
   
-  //Register
+  //REGISTER
     app.post('/users/register', users.register)
+
+  //TRIPS
+    app.get('/trips/:id', trips.all)
+    app.post('/trips/add', trips.add)
+    app.delete('/trips/remove/:id', trips.remove)
 }

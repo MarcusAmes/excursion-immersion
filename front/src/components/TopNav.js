@@ -36,8 +36,8 @@ class TopNav extends Component{
             :
               <Form onSubmit={this._onSubmit}>
                 {this.props.loginError && <p>Email and/or password is incorrect</p>}
-                <Input onChange={this._onChange} value={this.state.email} name="email" type='text' placeholder='email' />{' '}
-                <Input onChange={this._onChange} value={this.state.password} name="password" type='text' placeholder='password' />{' '}
+                <Input onChange={this._onChange} value={this.state.email} name="email" type='email' placeholder='email' />
+                <Input onChange={this._onChange} value={this.state.password} name="password" type='password' placeholder='password' />
                 <Button type='submit'>Sign in</Button>            
               </Form>}
           </Nav>

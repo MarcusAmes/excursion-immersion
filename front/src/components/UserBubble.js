@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function UserBubble(props) {
   return (
     <div>
-      <Link to="/user">Account</Link> 
+      <Link to="/home">Account</Link> 
     </div>
   )
 }
