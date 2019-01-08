@@ -1,5 +1,6 @@
 const users = require("../controllers/users.js")
 const trips = require("../controllers/trips.js")
+const activities = require("../controllers/activities.js")
 
 module.exports = function(app){
 
@@ -15,4 +16,7 @@ module.exports = function(app){
     app.get('/trips/:id', trips.all)
     app.post('/trips/add', trips.add)
     app.delete('/trips/remove/:id', trips.remove)
+
+  //ACTIVITIES
+    app.get('/activities/:id', activities.all)
 }

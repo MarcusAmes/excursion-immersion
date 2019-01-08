@@ -5,6 +5,7 @@ import {
   CardTitle,
   CardText
 } from 'reactstrap';
+import { Link } from 'react-router-dom'
 
 class SmallTrip extends Component {
 
@@ -25,7 +26,7 @@ class SmallTrip extends Component {
         <CardText>
           Budget: {this.props.trip.budget}     
         </CardText>
-        <Button color="secondary">View</Button>
+        <Button tag={Link} to={`/trip/${this.props.trip.id}`} color="secondary">View</Button>
       </Card>        
       </div>
     )

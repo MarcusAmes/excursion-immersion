@@ -1,5 +1,4 @@
 const knex = require("../db/knex.js");
-const hasher = require("../config/hasher.js");
 
 module.exports = {
   all: (req, res) => {
