@@ -1,4 +1,4 @@
-import { FETCH_ACTIVITIES_LOADING, FETCH_ACTIVITIES_SUCCESS, FETCH_ACTIVITIES_ERROR, ADD_ACTIVITY_SUCCESS, ADD_ACTIVITY_ERROR } from "../actions/activityActions";
+import { FETCH_ACTIVITIES_LOADING, FETCH_ACTIVITIES_SUCCESS, FETCH_ACTIVITIES_ERROR, ADD_ACTIVITY_SUCCESS, ADD_ACTIVITY_ERROR, REMOVE_ACTIVITY_SUCCESS, REMOVE_ACTIVITY_ERROR } from "../actions/activityActions";
 
 const initState = {
   activities: [],
@@ -33,6 +33,19 @@ const activityReducer = (state = initState, action) => {
         activities: [...state.activities, action.payload]
       }
     case ADD_ACTIVITY_ERROR:
+      return {
+        ...state,
+        activitiesError: true
+      }
+    case REMOVE_ACTIVITY_SUCCESS:
+      console.log(action.payload);
+      
+      return {
+        ...state,
+        activitiesError: false,
+        activities: state.activities.filter(activity => activity.id !== action.payload.id)
+      }
+    case REMOVE_ACTIVITY_ERROR:
       return {
         ...state,
         activitiesError: true

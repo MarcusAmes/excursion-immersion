@@ -1,49 +1,54 @@
 import React, { Component } from 'react'
-import Activity from './Activity';
 import { Row, Container, Col} from 'reactstrap'
 import AddActivityModalContainer from '../containers/AddActivityModalContainer';
 import moment from 'moment'
 import { Pie } from 'react-chartjs-2'
+import ActivityContainer from '../containers/ActivityContainer';
 
 class ViewTrip extends Component {
-
   componentDidMount() {
     this.props.fetchActivities(this.props.match.params.id)
   }
 
-  _onClick = ({target}) => {
-    console.log(target.name);
-  }
-
-  render() {     
+  render() {  
     if (this.props.activitiesLoading) {
       return <div>Loading...</div>
     }  
+    const trip = this.props.trips.filter(trip => trip.id === Number(this.props.match.params.id))[0]
+
+    if (!trip) {
+      this.props.history.push('/home');  
+    }
 
     const sortedByDate = this.props.activities.sort((a, b) => {
       return moment(a.start).isBefore(b.start) ? -1 : !moment(a.start).isBefore(b.start) ? 1 : 0
     })
-    const ActivityList = sortedByDate.map(activity => <Activity key={activity.id} activity={activity}/>)
-    
-    const data = {
-      labels: [
-          'Budget',
-          'Green',
-          'Yellow'
-        ],
-        datasets: [{
-          data: [300, 50, 100],
-          backgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56'
+    const ActivityList = sortedByDate.map(activity => <ActivityContainer key={activity.id} activity={activity}/>)
+    const activityNames = this.props.activities.map(activity => activity.name)
+    const activityPrices = this.props.activities.map(activity => activity.price)
+    let data;
+    if(trip){    
+      data = {
+        labels: [
+            'Budget',
+            ...activityNames
           ],
-          hoverBackgroundColor: [
-            '#FF6384',
-            '#36A2EB',
-            '#FFCE56'
-          ]
-        }]
+          datasets: [{
+            data: [trip.budget, ...activityPrices],
+            backgroundColor: [
+              'grey',
+              '#36A2EB',
+              '#FFCE56',
+              '#FF6384'
+            ],
+            hoverBackgroundColor: [
+              'grey',
+              '#36A2EB',
+              '#FFCE56',
+              '#FF6384'
+            ]
+          }]
+      }
     }
     return (
       <Container>
@@ -56,7 +61,7 @@ class ViewTrip extends Component {
             {ActivityList}
           </Col>
           <Col xl="4">
-            <Pie data={data}/>
+            <Pie data={data} width={100} height={100}/>
           </Col>
         </Row>
       </Container>

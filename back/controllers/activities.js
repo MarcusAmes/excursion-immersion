@@ -10,5 +10,11 @@ module.exports = {
     knex('activities')
       .insert(req.body, '*')
       .then(newActivity => res.json(newActivity[0]))
+  },
+  remove: (req, res) => {
+    knex('activities')
+      .where('id', req.params.id)
+      .del('*')
+      .then(deletedActivity => res.json(deletedActivity[0]))
   }
 }

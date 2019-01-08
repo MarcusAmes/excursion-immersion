@@ -20,4 +20,5 @@ module.exports = function(app){
   //ACTIVITIES
     app.get('/activities/:id', activities.all)
     app.post('/activities/add', activities.add)
+    app.delete('/activities/remove/:id', activities.remove)
 }

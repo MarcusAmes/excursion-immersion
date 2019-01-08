@@ -15,13 +15,19 @@ const addActivitySuccess = (activity) => ({ type: ADD_ACTIVITY_SUCCESS, payload:
 export const ADD_ACTIVITY_ERROR = "ADD_ACTIVITY_ERROR";
 const addActivityError = () => ({ type: ADD_ACTIVITY_ERROR })
 
+export const REMOVE_ACTIVITY_SUCCESS = "REMOVE_ACTIVITY_SUCCESS";
+const removeActivitySuccess = (activity) => ({ type: REMOVE_ACTIVITY_SUCCESS, payload: activity })
+
+export const REMOVE_ACTIVITY_ERROR = "REMOVE_ACTIVITY_ERROR";
+const removeActivityError = () => ({ type: REMOVE_ACTIVITY_ERROR })
+
 //THUNKS
 
 export const fetchActivities = (id) => dispatch => {
   dispatch (
     fetchActivitiesLoading()
   )
-  return fetch(`http://localhost:8000/activities/${id}`)
+  return fetch(`/activities/${id}`)
     .then(res => res.json())
     .then(response => {
       dispatch(
@@ -34,7 +40,7 @@ export const fetchActivities = (id) => dispatch => {
 }
 
 export const addActivity = (activity) => dispatch => {
-  return fetch(`http://localhost:8000/activities/add`, {
+  return fetch(`/activities/add`, {
     method: 'POST',
       body: JSON.stringify(activity),
       headers: {
@@ -51,3 +57,19 @@ export const addActivity = (activity) => dispatch => {
       addActivityError()
     ))
 }
+
+export const removeActivity = (id) => dispatch => {
+  return fetch(`/activities/remove/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(response => {
+      dispatch(
+        removeActivitySuccess(response)
+      )
+    })
+    .catch(err => dispatch(
+      removeActivityError()
+    ))
+}
+

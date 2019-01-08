@@ -7,7 +7,7 @@ const mapStateToProps = ({activities, trips}) => {
     activities: activities.activities,
     activitiesLoading: activities.activitiesLoading,
     activitiesError: activities.activitiesError,
-    budget: trips.budget
+    trips: trips.trips
   }
 }
 

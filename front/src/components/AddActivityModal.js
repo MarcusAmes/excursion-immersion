@@ -33,7 +33,7 @@ class AddActivityModal extends Component {
     e.preventDefault();
     let newActivity = {trip_id: this.props.trip_id}
     for (let key in this.state) {
-      if (key !== "modal" && (this.state[key].trim().length || this.state[key] > 0)) {
+      if (key !== "modal" && (this.state[key] > 0 || ((typeof this.state[key] === "string") && this.state[key].trim().length))) {
         newActivity[key] = this.state[key]
       }
     }
