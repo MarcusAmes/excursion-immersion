@@ -18,7 +18,7 @@ class ViewTrip extends Component {
     }  
 
     const sortedByDate = this.props.activities.sort((a, b) => {
-      return a > b
+      return a.start > b.start
     })
 
     const ActivityList = sortedByDate.map(activity => <Activity key={activity.id} activity={activity}/>)

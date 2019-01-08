@@ -9,8 +9,8 @@ exports.up = function(knex, Promise) {
       .onDelete('CASCADE');
     table.string('title');
     table.string('type');
-    table.date('start');
-    table.date('end').defaultTo(null);
+    table.string('start');
+    table.string('end').defaultTo(null);
     table.string('address').defaultTo(null);
     table.integer('price').defaultTo(0);
     table.timestamps(true, true);

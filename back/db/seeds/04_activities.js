@@ -7,19 +7,20 @@ exports.seed = function(knex, Promise) {
           trip_id: 1,
           title: "Flight out",
           type: "flight",
-          start: 'January 17, 2019, 03:25:00'    
+          start: '2019-01-20T08:40:00-07:00',
+          end: '2019-01-20T09:40:00-07:00'
         },
         {
           trip_id: 1,
           title: "Meeting with bob",
           type: "business",
-          start: 'January 19, 2019, 03:25:00'
+          start: '2019-01-20 15:30:00'
         },
         {
           trip_id: 1,
           title: "Flight back",
           type: "flight",
-          start: 'January 22, 2019, 03:25:00'
+          start: '2019-01-21 15:30:00'
         },
       ]);
     });
