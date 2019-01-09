@@ -21,4 +21,5 @@ module.exports = function(app){
     app.get('/activities/:id', activities.all)
     app.post('/activities/add', activities.add)
     app.delete('/activities/remove/:id', activities.remove)
+    app.patch('/activities/edit/:id', activities.edit)
 }

@@ -28,6 +28,7 @@ class ViewTrip extends Component {
     const onlyPrice = sortedByDate.filter(activity => activity.price > 1)
     const activityNames = onlyPrice.map(activity => activity.name)
     const activityPrices = onlyPrice.map(activity => activity.price)
+    const budget = trip.budget - activityPrices.reduce((acc, price) => acc + price, 0)
     const colors = onlyPrice.map(() => {
       const letters = '0123456789ABCDEF'.split('');
       var color = '#';
@@ -40,11 +41,11 @@ class ViewTrip extends Component {
     if(trip){    
       data = {
         labels: [
-            'Budget',
+            'Budget Left',
             ...activityNames
           ],
           datasets: [{
-            data: [trip.budget, ...activityPrices],
+            data: [budget > 0 ? budget : 0, ...activityPrices],
             backgroundColor: ["grey", ...colors],
             hoverBackgroundColor: ["grey", ...colors]
           }]
@@ -55,6 +56,7 @@ class ViewTrip extends Component {
         <div style={{textAlign: "center", marginBottom: "10px"}}>
           <h1 style={{fontSize: "4em"}}>{trip.name}</h1>
           <h4>Destination: {trip.destination}</h4>
+          <h4>Budget: {trip.budget}</h4>
         </div>
         <div style={{marginBottom: "20px", marginTop: "10px"}}>
           <AddActivityModalContainer trip_id={this.props.match.params.id} />

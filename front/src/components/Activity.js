@@ -21,7 +21,7 @@ class Activity extends Component {
           </div>
         </div>
         {!this.props.last && <div style={{display: "flex", justifyContent: "center"}}>
-          <div style={{height: "40px", width: "12px", backgroundColor: "grey", borderRadius: "10px", opacity: "1", margin: "10px"}}>
+          <div style={{height: "12px", width: "12px", backgroundColor: "grey", borderRadius: "50%", opacity: "1", margin: "10px"}}>
           </div>
         </div>}
       </div>

@@ -41,8 +41,6 @@ export const fetchTrips = (id) => dispatch => {
 }
 
 export const addTrip = (trip) => dispatch => {
-  console.log(trip);
-  
   return fetch('/trips/add', {
       method: 'POST',
       body: JSON.stringify(trip),

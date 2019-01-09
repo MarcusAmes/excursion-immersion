@@ -10,8 +10,8 @@ exports.up = function(knex, Promise) {
     table.string('name');
     table.string('type');
     table.string('start');
-    table.string('end').defaultTo(null);
-    table.string('address').defaultTo(null);
+    table.string('end').defaultTo("");
+    table.string('address').defaultTo("");
     table.integer('price').defaultTo(0);
     table.timestamps(true, true);
   })

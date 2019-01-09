@@ -58,7 +58,7 @@ class EditButton extends Component {
           </div>
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem onClick={this._onEdit}>Edit</DropdownItem>
+          <DropdownItem onClick={this._onEdit}>{this.props.type === "activity" ? "Edit/View" : "Edit"}</DropdownItem>
           <DropdownItem onClick={this._onDelete} style={{color: "red"}}>Delete</DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>

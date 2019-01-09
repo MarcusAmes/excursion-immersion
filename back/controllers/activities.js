@@ -16,5 +16,13 @@ module.exports = {
       .where('id', req.params.id)
       .del('*')
       .then(deletedActivity => res.json(deletedActivity[0]))
+  },
+  edit: (req, res) => {
+    console.log(req.body);
+    
+    knex('activities')
+      .where('id', req.params.id)
+      .update(req.body, '*')
+      .then(updatedActivity => res.json(updatedActivity))
   }
 }

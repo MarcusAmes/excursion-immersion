@@ -11,6 +11,8 @@ import {
   FormGroup,
   Label
 } from 'reactstrap';
+import fetchJsonp from 'fetch-jsonp'
+import AutoComplete from 'react-autocomplete'
 
 const style = {
   color: "red"
@@ -21,7 +23,8 @@ class AddTripModal extends Component {
     modal: false,
     name: "",
     destination: "",
-    budget: 0
+    budget: 0,
+    auto: []
   }
 
   toggle = () => {
@@ -37,19 +40,14 @@ class AddTripModal extends Component {
       img_url: "lBL7rSRaNGs"
     };
     for (let key in this.state) {
-      if (key !== 'modal' && ((key !== 'budget' && this.state[key].trim().length) || this.state[key] > 0)) {
+      if (key !== 'modal' && key !== 'auto' && ((key !== 'budget' && this.state[key].trim().length) || this.state[key] > 0)) {
         newTrip[key] = this.state[key]
       }
     }
-    this.toggle({target: {name: null}})
     fetch(`https://api.unsplash.com/search/photos?client_id=${apiParams.key}&page=1&query=${this.state.destination}`)
     .then(res => res.json())
     .then(image => {
-      console.log(image);
-      
       for (let i = 2; i < image.results.length; i++) {
-        console.log(image.results[i].width / image.results[i].height);
-        
         if (image.results[i].width / image.results[i].height > 1.2) {
           newTrip.img_url = image.results[i].id
           continue;
@@ -57,10 +55,25 @@ class AddTripModal extends Component {
       }
       this.props.addTrip(newTrip)
     })
+    this.setState({
+      modal: false,
+      name: "",
+      destination: "",
+      budget: 0,
+      auto: []
+    })
   }
 
   _onChange = ({target}) => {
     this.setState({[target.name]: target.value})
+    if(target.name === "destination" && target.value.length > 2) {
+      fetchJsonp(`http://gd.geobytes.com/AutoCompleteCity?&q=${target.value}&sort=size&template=<geobytes%20city>,%20<geobytes%20code>`)
+      .then((response) => {
+          return response.json()
+        }).then((json) => {
+          this.setState({auto: json})
+      })
+    }
   }
 
   render() {
@@ -79,7 +92,21 @@ class AddTripModal extends Component {
               <FormGroup>
                 <span style={style}>*</span>
                 <Label for="destination">Destination</Label>
-                <Input onChange={this._onChange} value={this.state.destination} name="destination" type='text' placeholder='Destination' />
+                <Input tag={AutoComplete} 
+                  style={{width: "100%"}}
+                  wrapperStyle={{display: "block", width: "100%"}}
+                  placeholder='Destination' 
+                  getItemValue={item => item}
+                  items={this.state.auto}
+                  renderItem={(item, isHighlighted) =>
+                    <div item style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                      {item}
+                    </div>
+                  }
+                  value={this.state.destination}
+                  onChange={({target}) => this._onChange({target: {name: "destination", value: target.value}})}
+                  name='destination'
+                  onSelect={val => this.setState({destination: val})}/>
               </FormGroup>
               <FormGroup>
                 <Label for="budget">Budget</Label>

@@ -21,6 +21,9 @@ const removeActivitySuccess = (activity) => ({ type: REMOVE_ACTIVITY_SUCCESS, pa
 export const REMOVE_ACTIVITY_ERROR = "REMOVE_ACTIVITY_ERROR";
 const removeActivityError = () => ({ type: REMOVE_ACTIVITY_ERROR })
 
+export const EDIT_ACTIVITY_SUCCESS = "EDIT_ACTIVITY_SUCCESS";
+const editActivitySuccess = (activity) => ({ type: EDIT_ACTIVITY_SUCCESS, payload: activity })
+
 //THUNKS
 
 export const fetchActivities = (id) => dispatch => {
@@ -42,10 +45,10 @@ export const fetchActivities = (id) => dispatch => {
 export const addActivity = (activity) => dispatch => {
   return fetch(`/activities/add`, {
     method: 'POST',
-      body: JSON.stringify(activity),
-      headers: {
-        'Content-Type': 'application/json'
-      }
+    body: JSON.stringify(activity),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
     .then(res => res.json())
     .then(response => {
@@ -71,5 +74,25 @@ export const removeActivity = (id) => dispatch => {
     .catch(err => dispatch(
       removeActivityError()
     ))
+}
+
+export const editActivity = (activity, id) => dispatch => {
+  return fetch(`/activities/edit/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(activity),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(response => {
+      response.id = id
+      dispatch(
+        editActivitySuccess(response)
+      )
+    })
+    .catch(err => 
+      console.log(err)     
+    )
 }
 
