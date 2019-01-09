@@ -9,7 +9,7 @@ import RegisterContainer from './containers/RegisterContainer';
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div style={{height: "100vh", fontSize: "12pt"}} className="App">
         <Route path='/' component={TopNavContainer} />
         <Switch>
           <Route exact path='/' component={Splash} />

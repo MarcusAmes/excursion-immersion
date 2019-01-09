@@ -34,6 +34,11 @@ class EditButton extends Component {
       this.props.removeTrip(this.props.id)
     }
   }
+
+  _onEdit = () => {
+
+  }
+
   render() {
     
     return (
@@ -48,7 +53,7 @@ class EditButton extends Component {
           </div>
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem>Edit</DropdownItem>
+          <DropdownItem onClick={this._onEdit}>Edit</DropdownItem>
           <DropdownItem onClick={this._onDelete} style={{color: "red"}}>Delete</DropdownItem>
         </DropdownMenu>
       </ButtonDropdown>
