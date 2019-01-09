@@ -72,6 +72,9 @@ class AddActivityModal extends Component {
           <Button onClick={this.toggle} name="car">Add Rental Car</Button>
         </Col>
         <Col style={{display: "flex", justifyContent: "center"}}>
+          <Button onClick={this.toggle} name="business">Add Business Meeting</Button>
+        </Col>
+        <Col style={{display: "flex", justifyContent: "center"}}>
           <Button onClick={this.toggle} name="custom">Add Custom</Button>
         </Col>
         <Modal isOpen={this.state.modal} toggle={this.toggle} >

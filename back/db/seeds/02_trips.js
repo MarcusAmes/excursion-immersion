@@ -11,14 +11,14 @@ exports.seed = function(knex, Promise) {
           img_url: "iKlafvet_w0"
         },
         {
-          user_id: 2,
+          user_id: 1,
           name: "Wedding",
           destination: "New York, NY",
           budget: 800,
           img_url: "fLxWR2dS76I"
         },
         {
-          user_id: 3,
+          user_id: 1,
           name: "Business trip",
           destination: "San Francisco, CA",
           budget: 500,
