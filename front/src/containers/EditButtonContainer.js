@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
-import Activity from '../components/Activity';
 import { removeActivity } from '../actions/activityActions';
+import EditButton from '../components/EditButton';
+import { removeTrip } from '../actions/tripActions';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -8,8 +9,13 @@ const mapDispatchToProps = dispatch => {
       dispatch (
         removeActivity(id)
       )
+    },
+    removeTrip: (id) => {
+      dispatch (
+        removeTrip(id)
+      )
     }
   }
 }
 
-export default connect(null, mapDispatchToProps)(Activity)
+export default connect(null, mapDispatchToProps)(EditButton)

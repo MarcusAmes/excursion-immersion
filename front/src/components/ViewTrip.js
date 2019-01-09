@@ -3,7 +3,8 @@ import { Row, Container, Col} from 'reactstrap'
 import AddActivityModalContainer from '../containers/AddActivityModalContainer';
 import moment from 'moment'
 import { Pie } from 'react-chartjs-2'
-import ActivityContainer from '../containers/ActivityContainer';
+import { Redirect } from 'react-router-dom'
+import Activity from './Activity';
 
 class ViewTrip extends Component {
   componentDidMount() {
@@ -17,15 +18,24 @@ class ViewTrip extends Component {
     const trip = this.props.trips.filter(trip => trip.id === Number(this.props.match.params.id))[0]
 
     if (!trip) {
-      this.props.history.push('/home');  
+      return <Redirect to='/home' />
     }
 
     const sortedByDate = this.props.activities.sort((a, b) => {
       return moment(a.start).isBefore(b.start) ? -1 : !moment(a.start).isBefore(b.start) ? 1 : 0
     })
-    const ActivityList = sortedByDate.map(activity => <ActivityContainer key={activity.id} activity={activity}/>)
-    const activityNames = this.props.activities.map(activity => activity.name)
-    const activityPrices = this.props.activities.map(activity => activity.price)
+    const ActivityList = sortedByDate.map((activity, i) => <Activity key={activity.id} activity={activity} last={sortedByDate.length-1 === i}/>)
+    const onlyPrice = sortedByDate.filter(activity => activity.price > 1)
+    const activityNames = onlyPrice.map(activity => activity.name)
+    const activityPrices = onlyPrice.map(activity => activity.price)
+    const colors = onlyPrice.map(() => {
+      const letters = '0123456789ABCDEF'.split('');
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    })
     let data;
     if(trip){    
       data = {
@@ -35,18 +45,8 @@ class ViewTrip extends Component {
           ],
           datasets: [{
             data: [trip.budget, ...activityPrices],
-            backgroundColor: [
-              'grey',
-              '#36A2EB',
-              '#FFCE56',
-              '#FF6384'
-            ],
-            hoverBackgroundColor: [
-              'grey',
-              '#36A2EB',
-              '#FFCE56',
-              '#FF6384'
-            ]
+            backgroundColor: ["grey", ...colors],
+            hoverBackgroundColor: ["grey", ...colors]
           }]
       }
     }
@@ -57,7 +57,7 @@ class ViewTrip extends Component {
         </div>
 
         <Row>
-          <Col xl="8">
+          <Col style={{padding: "10px", height: "80vh", overflow: "auto"}} xl="8">
             {ActivityList}
           </Col>
           <Col xl="4">

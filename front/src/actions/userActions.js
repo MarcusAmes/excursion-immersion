@@ -9,7 +9,7 @@ const loginError = () => ({ type: LOGIN_ERROR })
 //Thunks
 
 export const login = (user, history) => dispatch => {
-  return fetch('http://localhost:8000/users/login', {
+  return fetch('/users/login', {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {

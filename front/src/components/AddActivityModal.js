@@ -8,8 +8,14 @@ import {
   Form,
   Input,
   Col,
-  Row
+  Row,
+  FormGroup,
+  Label
 } from 'reactstrap';
+
+const style = {
+  color: "red"
+}
 
 class AddActivityModal extends Component { 
   state = {
@@ -38,7 +44,15 @@ class AddActivityModal extends Component {
       }
     }
     this.props.addActivity(newActivity)
-    this.toggle({target: {name: null}})
+    this.setState({
+      modal: false,
+      name: "",
+      type: "custom",
+      address: "",
+      start: "",
+      end: "",
+      price: 0
+    })
   }
 
   _onChange = ({target}) => {
@@ -64,11 +78,29 @@ class AddActivityModal extends Component {
           <ModalHeader toggle={this.toggle}>Add {this.state.type.substring(0, 1).toUpperCase() + this.state.type.substring(1)}</ModalHeader>
           <ModalBody>
             <Form>
-              <Input onChange={this._onChange} value={this.state.name} name="name" type='text' placeholder='Activity Name' />
-              <Input onChange={this._onChange} value={this.state.address} name="address" type='text' placeholder='Address' />
-              <Input onChange={this._onChange} value={this.state.start} name="start" type='datetime-local' placeholder='Start' />
-              {/* <Input onChange={this._onChange} value={this.state.end} name="end" type='datetime-local' placeholder='End' /> */}
-              <Input onChange={this._onChange} value={this.state.price} name="price" type='number' placeholder='Price' />
+              <FormGroup>
+                <span style={style}>*</span>
+                <Label for="name">Name</Label>
+                <Input onChange={this._onChange} value={this.state.name} name="name" type='text' placeholder='Activity Name' />
+              </FormGroup>
+              <FormGroup>
+                <Label for="address">Address</Label>
+                <Input onChange={this._onChange} value={this.state.address} name="address" type='text' placeholder='Address' />
+              </FormGroup>
+              <FormGroup>
+                <span style={style}>*</span>
+                <Label for="start">Starting date and time</Label>
+                <Input onChange={this._onChange} value={this.state.start} name="start" type='datetime-local' placeholder='Start' />
+              </FormGroup>
+              <FormGroup>
+                <Label for="ens">Ending date and time</Label>
+                <Input onChange={this._onChange} value={this.state.end} name="end" type='datetime-local' placeholder='End' />
+              </FormGroup>
+              <FormGroup>
+                <Label for="price">Price</Label>
+                <Input onChange={this._onChange} value={this.state.price} name="price" type='number' placeholder='Price' />
+              </FormGroup>
+              <span style={style}>* required</span>
             </Form>
           </ModalBody>
           <ModalFooter>

@@ -28,7 +28,7 @@ class TopNav extends Component{
 
   render(){
     return (
-      <Navbar color="light" light expand="md">
+      <Navbar color="warning" light expand="md">
         <NavbarBrand tag={Link} to="/" >Travel Planner</NavbarBrand>
           <Nav className="ml-auto" navbar>
             {this.props.loggedIn ?

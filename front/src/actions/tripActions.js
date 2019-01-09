@@ -26,7 +26,7 @@ export const fetchTrips = (id) => dispatch => {
   dispatch(
     fetchTripsLoading()
   )
-  return fetch(`http://localhost:8000/trips/${id}`)
+  return fetch(`/trips/${id}`)
     .then(res => res.json())
     .then(response => {
       dispatch(
@@ -43,7 +43,7 @@ export const fetchTrips = (id) => dispatch => {
 export const addTrip = (trip) => dispatch => {
   console.log(trip);
   
-  return fetch('http://localhost:8000/trips/add', {
+  return fetch('/trips/add', {
       method: 'POST',
       body: JSON.stringify(trip),
       headers: {
@@ -64,7 +64,7 @@ export const addTrip = (trip) => dispatch => {
 }
 
 export const removeTrip = (id) => dispatch => {
-  return fetch(`http://localhost:8000/trips/remove/${id}`, {
+  return fetch(`/trips/remove/${id}`, {
       method: 'DELETE'
     }).then(res => res.json())
     .then(response => {

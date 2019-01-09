@@ -1,41 +1,13 @@
 import React, { Component } from 'react'
 import ActivityIcon from './ActivityIcon';
 import moment from 'moment'
-import {
-  ButtonDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from 'reactstrap';
-
-const style = {
-  color: "black",
-  display: "flex",
-  alignItems: "center",
-  height: "7px",
-  margin: "0",
-  padding: "0"
-}
+import EditButtonContainer from '../containers/EditButtonContainer';
 
 class Activity extends Component {
-  state = {
-    dropdownOpen: false
-  };
-
-  toggle = () => {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
-
-  _onDelete = () => {
-    this.props.removeActivity(this.props.activity.id)
-  }
-
   render() {
     return (
       <div>
-        <div style={{display: "flex", justifyContent: "space-between", boxShadow: "3px 3px 10px black", padding: "4px", borderRadius: "10px"}}>
+        <div style={{display: "flex", justifyContent: "space-between", boxShadow: "3px 3px 10px black", padding: "6px", borderRadius: "10px"}}>
           <div style={{display: "flex", alignItems: "center"}}>
             <ActivityIcon type={this.props.activity.type}/>
             <div style={{marginLeft: "10px"}}>
@@ -45,24 +17,13 @@ class Activity extends Component {
             </div>
           </div>
           <div>
-            <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-              <DropdownToggle style={{backgroundColor: "white", border: "none", borderRadius: "5px"}}>
-                <div style={style}>.</div>
-                <div style={style}>.</div>
-                <div style={style}>.</div>
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>Edit</DropdownItem>
-                <DropdownItem onClick={this._onDelete} style={{color: "red"}}>Delete</DropdownItem>
-              </DropdownMenu>
-            </ButtonDropdown>
+            <EditButtonContainer type="activity" id={this.props.activity.id} />
           </div>
         </div>
-        <div style={{display: "flex", justifyContent: "center"}}>
+        {!this.props.last && <div style={{display: "flex", justifyContent: "center"}}>
           <div style={{height: "40px", width: "12px", backgroundColor: "grey", borderRadius: "10px", opacity: "1", margin: "10px"}}>
-
           </div>
-        </div>
+        </div>}
       </div>
     )
   }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import apiParams from '../google'
-
 import {
   Button,
   Modal,
@@ -8,8 +7,14 @@ import {
   ModalBody,
   ModalFooter,
   Form,
-  Input
+  Input,
+  FormGroup,
+  Label
 } from 'reactstrap';
+
+const style = {
+  color: "red"
+}
 
 class AddTripModal extends Component { 
   state = {
@@ -66,9 +71,20 @@ class AddTripModal extends Component {
           <ModalHeader toggle={this.toggle}>Add Trip</ModalHeader>
           <ModalBody>
             <Form>
-              <Input onChange={this._onChange} value={this.state.name} name="name" type='text' placeholder='Trip Name' />
-              <Input onChange={this._onChange} value={this.state.destination} name="destination" type='text' placeholder='Destination' />
-              <Input onChange={this._onChange} value={this.state.budget} name="budget" type='number' placeholder='Budget' />
+              <FormGroup>
+                <span style={style}>*</span>
+                <Label for="name">Name</Label>
+                <Input onChange={this._onChange} value={this.state.name} name="name" type='text' placeholder='Trip Name' />
+              </FormGroup>
+              <FormGroup>
+                <span style={style}>*</span>
+                <Label for="destination">Destination</Label>
+                <Input onChange={this._onChange} value={this.state.destination} name="destination" type='text' placeholder='Destination' />
+              </FormGroup>
+              <FormGroup>
+                <Label for="budget">Budget</Label>
+                <Input onChange={this._onChange} value={this.state.budget} name="budget" type='number' placeholder='Budget' />
+              </FormGroup>
             </Form>
           </ModalBody>
           <ModalFooter>
