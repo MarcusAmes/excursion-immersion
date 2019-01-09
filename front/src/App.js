@@ -5,6 +5,7 @@ import Splash from './components/Splash';
 import HomeContainer from './containers/HomeContainer';
 import ViewTripContainer from './containers/ViewTripContainer';
 import RegisterContainer from './containers/RegisterContainer';
+import EditActivityContainer from './containers/EditActivityContainer';
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route path='/register' component={RegisterContainer} />
           <Route exact path='/home' component={HomeContainer} />
           <Route path='/trip/:id' component={ViewTripContainer} />
+          <Route path='/activity/:id' component={EditActivityContainer} />
         </Switch>
       </div>
     );

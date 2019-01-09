@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import { withRouter } from 'react-router-dom'
 
 const style = {
   color: "black",
@@ -36,7 +37,11 @@ class EditButton extends Component {
   }
 
   _onEdit = () => {
-
+    if (this.props.type === "activity") {
+      this.props.history.push(`/activity/${this.props.id}`)  
+    } else if (this.props.type === "trip") {
+      console.log('trip')
+    }
   }
 
   render() {
@@ -61,4 +66,4 @@ class EditButton extends Component {
   }
 }
 
-export default EditButton
+export default withRouter(EditButton)
