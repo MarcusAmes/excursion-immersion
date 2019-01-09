@@ -5,10 +5,12 @@ import {
   Nav,
   Form,
   Button,
-  Input
+  Input,
+  FormGroup,
+  Col
 } from 'reactstrap';
-import UserBubble from './UserBubble';
 import { Link } from 'react-router-dom'
+import UserBubbleContainer from '../containers/UserBubbleContainer';
 
 class TopNav extends Component{
 
@@ -32,13 +34,21 @@ class TopNav extends Component{
         <NavbarBrand tag={Link} to="/" >Travel Planner</NavbarBrand>
           <Nav className="ml-auto" navbar>
             {this.props.loggedIn ?
-              <UserBubble />
+              <UserBubbleContainer />
             :
-              <Form onSubmit={this._onSubmit}>
+              <Form onSubmit={this._onSubmit} style={{display: "flex", alignItems: "center", justifyContent: "flex-end"}}>
                 {this.props.loginError && <p>Email and/or password is incorrect</p>}
-                <Input onChange={this._onChange} value={this.state.email} name="email" type='email' placeholder='email' />
-                <Input onChange={this._onChange} value={this.state.password} name="password" type='password' placeholder='password' />
-                <Button type='submit'>Sign in</Button>            
+                <FormGroup row style={{marginBottom: "0"}}>
+                  <Col>
+                    <Input onChange={this._onChange} value={this.state.email} name="email" type='email' placeholder='email' />
+                  </Col>
+                  <Col>
+                    <Input onChange={this._onChange} value={this.state.password} name="password" type='password' placeholder='password' />
+                  </Col>
+                  <Col>
+                    <Button type='submit'>Sign in</Button>            
+                  </Col>
+                </FormGroup>
               </Form>}
           </Nav>
       </Navbar>

@@ -1,12 +1,40 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
+import {
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from 'reactstrap';
 
-function UserBubble(props) {
-  return (
-    <div>
-      <Link to="/home">Account</Link> 
-    </div>
-  )
+class UserBubble extends Component {
+  _onLogout = () => {
+    this.props.logout(this.props.history) 
+  }
+  render() {
+    
+    return (
+      <div>
+        <UncontrolledDropdown nav inNavbar>
+          <DropdownToggle nav caret>
+            Account
+          </DropdownToggle>
+          <DropdownMenu right>
+            <DropdownItem tag={Link} to="/home">
+              Home 
+            </DropdownItem>
+            <DropdownItem>
+              Option 2
+            </DropdownItem>
+            <DropdownItem divider />
+            <DropdownItem onClick={this._onLogout}>
+              Logout
+            </DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+      </div>
+    )
+  }
 }
 
-export default UserBubble
+export default withRouter(UserBubble)
