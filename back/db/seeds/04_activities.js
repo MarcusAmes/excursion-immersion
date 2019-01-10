@@ -9,6 +9,7 @@ exports.seed = function(knex, Promise) {
           type: "flight",
           start: '2019-01-14T08:40:00-07:00',
           end: '2019-01-14T09:40:00-07:00',
+          address: '3400 E Sky Harbor Blvd, Phoenix, AZ 85034',
           price: 120
         },
         {
@@ -17,6 +18,7 @@ exports.seed = function(knex, Promise) {
           type: "custom",
           start: '2019-01-15T18:30:00-07:00',
           end: '2019-01-15T19:45:00-07:00',
+          address: '707 E Carson Ave, Las Vegas, NV 89101',
           price: 80
         },
         {
@@ -25,6 +27,7 @@ exports.seed = function(knex, Promise) {
           type: "flight",
           start: '2019-01-16T06:30:00-07:00',
           end: '2019-01-16T07:30:00-07:00',
+          address: '5757 Wayne Newton Blvd, Las Vegas, NV 89119',
           price: 120
         },
         {

@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
-import { Row, Container, Col} from 'reactstrap'
+import {
+  Row,
+  Container,
+  Col,
+  ListGroup
+} from 'reactstrap'
 import AddActivityModalContainer from '../containers/AddActivityModalContainer';
 import moment from 'moment'
 import { Pie } from 'react-chartjs-2'
@@ -64,7 +69,9 @@ class ViewTrip extends Component {
 
         <Row>
           <Col style={{padding: "10px", height: "80vh", overflow: "auto"}} xl="8">
-            {ActivityList}
+            <ListGroup>
+              {ActivityList}
+            </ListGroup>
           </Col>
           <Col xl="4">
             <Pie data={data} width={100} height={100}/>
