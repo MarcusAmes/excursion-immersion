@@ -14,6 +14,7 @@ import Activity from './Activity';
 class ViewTrip extends Component {
   componentDidMount() {
     this.props.fetchActivities(this.props.match.params.id)
+    this.props.fetchNotes(this.props.match.params.id)
   }
 
   render() {  
@@ -75,6 +76,9 @@ class ViewTrip extends Component {
               <AddActivityModalContainer trip_id={this.props.match.params.id} />
             </div>
             <Pie data={data} width={100} height={100}/>
+            <div>
+
+            </div>
           </Col>
         </Row>
       </Container>
