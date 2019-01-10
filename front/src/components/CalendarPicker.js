@@ -33,7 +33,6 @@ class CalendarPicker extends Component {
     if(this.state.checked < 4 && this.props.value) {
       this.setState({value: moment(this.props.value), checked: this.state.checked + 1})
     }
-    console.log(this.props.name, this.props.value);
     
     const state = this.state;
     const calendar = (<Calendar

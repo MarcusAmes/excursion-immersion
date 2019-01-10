@@ -38,8 +38,6 @@ class AddActivityModal extends Component {
 
   _onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.start);
-    
     let newActivity = {trip_id: this.props.trip_id}
     for (let key in this.state) {
       if (key !== "modal" && (this.state[key] > 0 || ((typeof this.state[key] === "string") && this.state[key].trim().length))) {
@@ -59,8 +57,6 @@ class AddActivityModal extends Component {
   }
 
   _onChange = ({target}) => {
-    console.log(target);
-    
     this.setState({[target.name]: target.value})
   }
 
