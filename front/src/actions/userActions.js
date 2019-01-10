@@ -10,10 +10,10 @@ export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS"
 const logoutSuccess = () => ({ type: LOGOUT_SUCCESS })
 
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS"
-export const registerSuccess = (user) => ({ type: REGISTER_SUCCESS, payload: user})
+const registerSuccess = (user) => ({ type: REGISTER_SUCCESS, payload: user})
 
 export const REGISTER_ERROR = "REGISTER_ERROR"
-export const registerError = (user) => ({ type: REGISTER_ERROR })
+const registerError = (user) => ({ type: REGISTER_ERROR })
 
 
 //Thunks
@@ -58,13 +58,13 @@ export const register = (user, history) => dispatch => {
     .then(res => res.json())
     .then(response => {
       dispatch(
-        loginSuccess(response)
+        registerSuccess(response)
       )
       history.push('/home')
     })
     .catch(err => {
       dispatch(
-        loginError()
+        registerError()
       )
     })
 }

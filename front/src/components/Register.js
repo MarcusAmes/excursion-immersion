@@ -31,6 +31,7 @@ class Register extends Component {
     return (
       <Container>
         <Form onSubmit={this._onSubmit}>
+          {this.props.registerError && <span style={{color: "red"}}>Email already linked to an existing account</span>}
           <FormGroup>
             <Label for="email">Email</Label>
             <Input onChange={this._onChange} value={this.state.email} type="email" name="email" id="email" placeholder="Email" />

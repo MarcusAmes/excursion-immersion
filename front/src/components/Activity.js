@@ -26,9 +26,6 @@ class Activity extends Component {
                 <Col>
                   <h3>{moment(this.props.activity.start).format('ddd, MMM D')}</h3>
                 </Col>
-                <Col>
-                  <h3>{moment(this.props.activity.start).format('LT')}</h3>
-                </Col>
               </Row>
             </Container>
           </ListGroupItem>
@@ -55,6 +52,7 @@ class Activity extends Component {
               <div style={{marginLeft: "10px"}}>
                 <h4>{`${moment(this.props.activity.start).format('LT')} ${this.props.activity.end ? moment(this.props.activity.end).format('- LT') : ""}`}</h4>
                 <h4>{this.props.activity.address}</h4>
+                {this.props.activity.price > 0 && <h4>${this.props.activity.price}</h4>}
               </div>
             </div>
           </div>

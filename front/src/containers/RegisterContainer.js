@@ -12,4 +12,10 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Register)
+const mapStateToProps = ({user}) => {
+  return {
+    registerError: user.registerError
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

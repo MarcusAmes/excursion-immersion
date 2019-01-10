@@ -59,16 +59,16 @@ class ViewTrip extends Component {
     return (
       <Container>
         <div style={{textAlign: "center", marginBottom: "10px"}}>
-          <h1 style={{fontSize: "4em"}}>{trip.name}</h1>
+          <h3 style={{fontSize: "3em"}}>{trip.name}</h3>
           <h4>Destination: {trip.destination}</h4>
-          <h4>Budget: {trip.budget}</h4>
+          <h4>Budget: ${trip.budget}</h4>
         </div>
         <div style={{marginBottom: "20px", marginTop: "10px"}}>
           <AddActivityModalContainer trip_id={this.props.match.params.id} />
         </div>
 
         <Row>
-          <Col style={{padding: "10px", height: "80vh", overflow: "auto"}} xl="8">
+          <Col style={{padding: "10px", height: "63vh", overflow: "auto"}} xl="8">
             <ListGroup>
               {ActivityList}
             </ListGroup>

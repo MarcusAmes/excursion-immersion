@@ -32,15 +32,23 @@ module.exports = {
     })
   },
   register: (req, res) => {
-    hasher.hash(req.body).then((user) => {
-      knex('users')
-        .insert({
-          email: user.email,
-          password: user.password
-        }, '*')
-        .then((result) => {
-          res.json(result[0])
-        })
-    })
+    knex('users')
+      .where('email', req.body.email)
+      .then(users => {
+        if(!users.length) {
+          hasher.hash(req.body).then((user) => {
+            knex('users')
+              .insert({
+                email: user.email,
+                password: user.password
+              }, '*')
+              .then((result) => {
+                res.json(result[0])
+              })
+          })
+        } else {
+          res.sendStatus(401)
+        }
+      })
   }
 }

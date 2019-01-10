@@ -5,16 +5,24 @@ exports.seed = function(knex, Promise) {
       return knex('activities').insert([
         {
           trip_id: 1,
-          name: "Flight out",
+          name: "Flight to Vegas",
           type: "flight",
-          start: '2019-01-14T08:40:00-07:00',
-          end: '2019-01-14T09:40:00-07:00',
+          start: '2019-01-14T10:40:00-07:00',
+          end: '2019-01-14T11:40:00-07:00',
           address: '3400 E Sky Harbor Blvd, Phoenix, AZ 85034',
-          price: 120
+          price: 130
         },
         {
           trip_id: 1,
-          name: "Dinner with family",
+          name: "MGM Check In",
+          type: "hotel",
+          start: '2019-01-14T14:00:00-07:00',
+          address: '3799 S Las Vegas Blvd, Las Vegas, NV 89109',
+          price: 550
+        },
+        {
+          trip_id: 1,
+          name: "Dinner with friends",
           type: "custom",
           start: '2019-01-15T18:30:00-07:00',
           end: '2019-01-15T19:45:00-07:00',
@@ -23,10 +31,27 @@ exports.seed = function(knex, Promise) {
         },
         {
           trip_id: 1,
+          name: "Night out",
+          type: "custom",
+          start: '2019-01-15T20:00:00-07:00',
+          end: '2019-01-16T01:30:00-07:00',
+          address: '707 E Carson Ave, Las Vegas, NV 89101',
+          price: 750
+        },
+        {
+          trip_id: 1,
+          name: "MGM Check Out",
+          type: "hotel",
+          start: '2019-01-16T11:00:00-07:00',
+          address: '3799 S Las Vegas Blvd, Las Vegas, NV 89109',
+          price: 0
+        },    
+        {
+          trip_id: 1,
           name: "Flight back",
           type: "flight",
-          start: '2019-01-16T06:30:00-07:00',
-          end: '2019-01-16T07:30:00-07:00',
+          start: '2019-01-16T12:30:00-07:00',
+          end: '2019-01-16T13:30:00-07:00',
           address: '5757 Wayne Newton Blvd, Las Vegas, NV 89119',
           price: 120
         },

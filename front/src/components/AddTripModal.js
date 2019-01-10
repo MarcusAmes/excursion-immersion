@@ -73,7 +73,7 @@ class AddTripModal extends Component {
       .then((response) => {
           return response.json()
         }).then((json) => {
-          this.setState({auto: json})
+          this.setState({auto: json.slice(0, 5)})
       })
     }
   }
@@ -101,7 +101,7 @@ class AddTripModal extends Component {
                   getItemValue={item => item}
                   items={this.state.auto}
                   renderItem={(item, isHighlighted) =>
-                    <div item style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
+                    <div key={Math.random()} style={{ background: isHighlighted ? 'lightgray' : 'white' }}>
                       {item}
                     </div>
                   }

@@ -41,7 +41,7 @@ class SmallTrip extends Component {
               Destination: {this.props.trip.destination}
             </CardText>
             {this.props.trip.budget > 0 && <CardText>
-              Budget: {this.props.trip.budget}     
+              Budget: ${this.props.trip.budget}     
             </CardText>}
             <Button tag={Link} to={`/trip/${this.props.trip.id}`} color="secondary">View</Button>
           </CardBody>

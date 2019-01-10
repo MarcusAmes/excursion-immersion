@@ -23,22 +23,22 @@ function ActivityIcon(props) {
   switch (props.type) {
     case "flight":
       style.backgroundColor = "lightBlue"
-      icon = <FaPlane size="2em" color="white"/>
+      icon = <FaPlane size="1.8em" color="white"/>
       break;
     case "car":
       style.backgroundColor = "red"
-      icon = <FaCar size="2em" color="white"/>
+      icon = <FaCar size="1.8em" color="white"/>
       break;
     case "business":
       style.backgroundColor = "black"
-      icon = <FaBriefcase size="2em" color="white"/>
+      icon = <FaBriefcase size="1.8em" color="white"/>
       break;
     case "hotel":
       style.backgroundColor = "lightGreen"
-      icon = <FaHotel size="2em" color="white"/>
+      icon = <FaHotel size="1.8em" color="white"/>
       break;
     default:
-      icon = <FaCalendarCheck size="2em" color="white"/>;
+      icon = <FaCalendarCheck size="1.8em" color="white"/>;
       break;
   }
   return (
