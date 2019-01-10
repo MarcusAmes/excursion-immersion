@@ -29,7 +29,7 @@ class Activity extends Component {
               </Row>
             </Container>
           </ListGroupItem>
-          <div style={{display: "flex", justifyContent: "flex-end", position: "relative", bottom: "68px", right: "2px", height: "0px", zIndex: "100"}}>
+          <div style={{display: "flex", justifyContent: "flex-end", position: "relative", bottom: "68px", right: "2px", height: "0px", zIndex: "9"}}>
             <EditButtonContainer type="activity" id={this.props.activity.id} />
           </div>
         </div>

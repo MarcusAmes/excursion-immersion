@@ -4,7 +4,9 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem,
+  NavItem,
+  NavLink
 } from 'reactstrap';
 
 class UserBubble extends Component {
@@ -14,25 +16,21 @@ class UserBubble extends Component {
   render() {
     
     return (
-      <div>
+      <>
+        <NavItem>
+          <NavLink tag={Link} to='/home'>Home</NavLink>
+        </NavItem>
         <UncontrolledDropdown nav inNavbar>
           <DropdownToggle nav caret>
             Account
           </DropdownToggle>
           <DropdownMenu right>
-            <DropdownItem tag={Link} to="/home">
-              Home 
-            </DropdownItem>
-            <DropdownItem>
-              Option 2
-            </DropdownItem>
-            <DropdownItem divider />
             <DropdownItem onClick={this._onLogout}>
               Logout
             </DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
-      </div>
+      </>
     )
   }
 }

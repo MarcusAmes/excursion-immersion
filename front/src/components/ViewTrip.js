@@ -63,17 +63,17 @@ class ViewTrip extends Component {
           <h4>Destination: {trip.destination}</h4>
           <h4>Budget: ${trip.budget}</h4>
         </div>
-        <div style={{marginBottom: "20px", marginTop: "10px"}}>
-          <AddActivityModalContainer trip_id={this.props.match.params.id} />
-        </div>
 
         <Row>
-          <Col style={{padding: "10px", height: "63vh", overflow: "auto"}} xl="8">
+          <Col style={{padding: "10px", height: "65vh", overflow: "auto"}} xl="8">
             <ListGroup>
               {ActivityList}
             </ListGroup>
           </Col>
           <Col xl="4">
+            <div style={{display: "flex", justifyContent: "center", marginBottom: "20px", marginTop: "10px"}}>
+              <AddActivityModalContainer trip_id={this.props.match.params.id} />
+            </div>
             <Pie data={data} width={100} height={100}/>
           </Col>
         </Row>

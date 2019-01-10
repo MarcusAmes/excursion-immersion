@@ -48,8 +48,6 @@ class AddTripModal extends Component {
     .then(res => res.json())
     .then(image => {
       for (let i = 2; i < image.results.length; i++) {
-        console.log(image.results[i]);
-        
         if (image.results[i].width / image.results[i].height > 1.2) {
           newTrip.img_url = image.results[i].urls.regular
           continue;
@@ -105,6 +103,9 @@ class AddTripModal extends Component {
                       {item}
                     </div>
                   }
+                  renderInput = {(props) => {
+                    return <input placeholder="Destination" style={{width: "100%", padding: "7px", borderRadius: "4px", border: "1px solid lightgrey"}} {...props} />
+                  }}
                   value={this.state.destination}
                   onChange={({target}) => this._onChange({target: {name: "destination", value: target.value}})}
                   name='destination'

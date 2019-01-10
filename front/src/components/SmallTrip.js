@@ -30,7 +30,7 @@ class SmallTrip extends Component {
     
     return (
       <Col style={style} xl="4" lg="4" md="6" sm="12" xs="12">
-        <Card style={{boxShadow: "3px 3px 10px black"}} inverse color={color[colorNumber]}>
+        <Card style={{boxShadow: "3px 3px 10px black"}} inverse color={this.props.trip.color ? this.props.trip.color : color[colorNumber]}>
           <div style={{height: "0px", position: "relative", top: "0px", display: "flex", justifyContent: "flex-end"}}>
             <EditButtonContainer height="40px" type="trip" id={this.props.trip.id} />
           </div>

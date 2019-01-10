@@ -7,12 +7,12 @@ import {
   ModalFooter,
   Form,
   Input,
-  Col,
   Row,
   FormGroup,
   Label
 } from 'reactstrap';
 import CalendarPicker from './CalendarPicker';
+import ButtonDropdownActivity from './ButtonDropdownActivity';
 
 const style = {
   color: "red"
@@ -63,21 +63,7 @@ class AddActivityModal extends Component {
   render() {
     return (
       <Row>
-        <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={(e) => this.toggle(e, true)} name="flight">Add Flight</Button>
-        </Col>
-        <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={(e) => this.toggle(e, true)} name="hotel">Add Hotel</Button>
-        </Col>
-        <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={(e) => this.toggle(e, true)} name="car">Add Car</Button>
-        </Col>
-        <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={(e) => this.toggle(e, true)} name="business">Add Business Meeting</Button>
-        </Col>
-        <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={(e) => this.toggle(e, true)} name="custom">Add Custom</Button>
-        </Col>
+        <ButtonDropdownActivity toggleModal={(e) => this.toggle(e, true)} />
         <Modal zIndex={10} isOpen={this.state.modal} toggle={() => null} >
           <ModalHeader toggle={this.toggle}>Add {this.state.type.substring(0, 1).toUpperCase() + this.state.type.substring(1)}</ModalHeader>
           <ModalBody>
