@@ -3,7 +3,8 @@ import {
   Row,
   Container,
   Col,
-  ListGroup
+  ListGroup,
+  ListGroupItem
 } from 'reactstrap'
 import AddActivityModalContainer from '../containers/AddActivityModalContainer';
 import moment from 'moment'
@@ -57,6 +58,8 @@ class ViewTrip extends Component {
           }]
       }
     }
+
+    const notes = this.props.notes.map(note => <ListGroupItem key={note.id}> {note.note} </ListGroupItem>)
     return (
       <Container>
         <div style={{textAlign: "center", marginBottom: "10px", marginTop: "10px"}}>
@@ -76,9 +79,9 @@ class ViewTrip extends Component {
               <AddActivityModalContainer trip_id={this.props.match.params.id} />
             </div>
             <Pie data={data} width={100} height={100}/>
-            <div>
-
-            </div>
+            <ListGroup>
+              {notes}
+            </ListGroup>
           </Col>
         </Row>
       </Container>
