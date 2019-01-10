@@ -37,7 +37,7 @@ class AddTripModal extends Component {
     e.preventDefault();
     let newTrip = {
       user_id: this.props.id,
-      img_url: "lBL7rSRaNGs"
+      img_url: "https://images.unsplash.com/photo-1506260408121-e353d10b87c7?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjUwMDk2fQ"
     };
     for (let key in this.state) {
       if (key !== 'modal' && key !== 'auto' && ((key !== 'budget' && this.state[key].trim().length) || this.state[key] > 0)) {
@@ -48,8 +48,10 @@ class AddTripModal extends Component {
     .then(res => res.json())
     .then(image => {
       for (let i = 2; i < image.results.length; i++) {
+        console.log(image.results[i]);
+        
         if (image.results[i].width / image.results[i].height > 1.2) {
-          newTrip.img_url = image.results[i].id
+          newTrip.img_url = image.results[i].urls.regular
           continue;
         }
       }

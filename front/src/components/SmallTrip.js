@@ -34,7 +34,7 @@ class SmallTrip extends Component {
           <div style={{height: "0px", position: "relative", top: "0px", display: "flex", justifyContent: "flex-end"}}>
             <EditButtonContainer height="40px" type="trip" id={this.props.trip.id} />
           </div>
-          <CardImg style={{}} top width="100%" src={`https://source.unsplash.com/${this.props.trip.img_url}`} alt="Destination" />
+          <CardImg style={{}} top width="100%" src={this.props.trip.img_url} alt="Destination" />
           <CardBody>
             <CardTitle><h1>{this.props.trip.name}</h1></CardTitle>
             <CardText>
