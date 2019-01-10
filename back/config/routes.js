@@ -1,6 +1,7 @@
 const users = require("../controllers/users.js")
 const trips = require("../controllers/trips.js")
 const activities = require("../controllers/activities.js")
+const tripNotes = require("../controllers/tripNotes.js")
 
 module.exports = function(app){
 
@@ -22,4 +23,9 @@ module.exports = function(app){
     app.post('/activities/add', activities.add)
     app.delete('/activities/remove/:id', activities.remove)
     app.patch('/activities/edit/:id', activities.edit)
+
+  //TRIP NOTES
+    app.get('/trips/notes/:id', tripNotes.all)
+    app.post('/trips/notes/add', tripNotes.add)
+    app.delete('/trips/notes/remove/:id', tripNotes.remove)
 }
