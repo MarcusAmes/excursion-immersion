@@ -5,6 +5,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
+import { FaPlusSquare } from "react-icons/fa";
 
 class ButtonDropdownActivity extends Component {
 
@@ -22,8 +23,8 @@ class ButtonDropdownActivity extends Component {
     return (
       <div style={{ width: "100%" }}>
         <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-          <DropdownToggle style={{borderRadius: "4px", width: "310px"}} color="danger" inverse>
-            Add Activity +
+          <DropdownToggle style={{borderRadius: "4px", width: "310px", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "1.3em"}} color="danger" inverse>
+            Add Activity <FaPlusSquare style={{marginLeft: "10px"}} size="1.5em"/>
           </DropdownToggle>
           <DropdownMenu>
             <DropdownItem name="flight" onClick={this.props.toggleModal}>Add Flight</DropdownItem>

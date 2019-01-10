@@ -20,7 +20,7 @@ componentDidMount() {
     return (
       <Container>
         <Row>   
-          <Col xl="4">
+          <Col xl={{offset: "4", size: "4"}}>
             <AddTripModalContainer />
           </Col>
         </Row>

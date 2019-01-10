@@ -58,7 +58,7 @@ class ViewTrip extends Component {
     }
     return (
       <Container>
-        <div style={{textAlign: "center", marginBottom: "10px"}}>
+        <div style={{textAlign: "center", marginBottom: "10px", marginTop: "10px"}}>
           <h3 style={{fontSize: "3em"}}>{trip.name}</h3>
           <h4>Destination: {trip.destination}</h4>
           <h4>Budget: ${trip.budget}</h4>

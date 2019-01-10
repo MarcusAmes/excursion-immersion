@@ -79,7 +79,7 @@ class AddTripModal extends Component {
   render() {
     return (
       <div>
-        <Button color="danger" onClick={this.toggle}>Add Trip</Button>
+        <Button style={{width: "100%", fontSize: "1.3em", borderTopLeftRadius: "0", borderTopRightRadius: "0"}} color="danger" onClick={this.toggle}>Add Trip</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} >
           <ModalHeader toggle={this.toggle}>Add Trip</ModalHeader>
           <ModalBody>

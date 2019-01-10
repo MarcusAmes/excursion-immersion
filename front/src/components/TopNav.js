@@ -31,7 +31,7 @@ class TopNav extends Component{
   render(){
     return (
       <Navbar color="warning" light expand="md">
-        <NavbarBrand tag={Link} to="/" style={{color: "white", fontFamily: "Staatliches", fontSize: "1.5em"}} >Travel Planner</NavbarBrand>
+        <NavbarBrand tag={Link} to="/" style={{ fontFamily: "Staatliches", fontSize: "1.5em"}} >Excursion Immersion</NavbarBrand>
           <Nav className="ml-auto" navbar>
             {this.props.loggedIn ?
               <UserBubbleContainer />

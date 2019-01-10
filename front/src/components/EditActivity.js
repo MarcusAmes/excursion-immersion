@@ -42,7 +42,7 @@ class EditActivity extends Component {
     e.preventDefault()
     const id = this.props.activities.filter(activity => activity.id === Number(this.props.match.params.id))[0].id
     this.props.editActivity(this.state, id)
-    this.props.history.push(`/home`)
+    this.props.history.goBack()
   }
 
   render() {
