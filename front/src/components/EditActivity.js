@@ -8,6 +8,7 @@ import {
   Button
 } from 'reactstrap'
 import { Redirect } from 'react-router-dom'
+import CalendarPicker from './CalendarPicker';
 
 class EditActivity extends Component {
   state = {
@@ -62,11 +63,11 @@ class EditActivity extends Component {
           </FormGroup>
           <FormGroup>
             <Label for="start">Starting date and time</Label>
-            <Input onChange={this._onChange} value={this.state.start} name="start" type='datetime-local' placeholder='Start' />
+            <CalendarPicker name="start" onChange={this._onChange} value={this.state.start} />
           </FormGroup>
           <FormGroup>
             <Label for="end">Ending date and time</Label>
-            <Input onChange={this._onChange} value={this.state.end} name="end" type='datetime-local' placeholder='End' />
+            <CalendarPicker name="end" onChange={this._onChange} value={this.state.end} />
           </FormGroup>
           <FormGroup>
             <Label for="price">Price</Label>

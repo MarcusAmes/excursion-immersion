@@ -23,7 +23,7 @@ exports.seed = function(knex, Promise) {
           trip_id: 1,
           name: "Flight back",
           type: "flight",
-          start: '2019-01-163T06:30:00-07:00',
+          start: '2019-01-16T06:30:00-07:00',
           end: '2019-01-16T07:30:00-07:00',
           price: 120
         },

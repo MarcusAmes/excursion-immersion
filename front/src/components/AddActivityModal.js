@@ -12,6 +12,7 @@ import {
   FormGroup,
   Label
 } from 'reactstrap';
+import CalendarPicker from './CalendarPicker';
 
 const style = {
   color: "red"
@@ -28,15 +29,17 @@ class AddActivityModal extends Component {
     price: 0
   }
 
-  toggle = ({target}) => {
+  toggle = ({target}, onOff) => {
     this.setState({
-      modal: !this.state.modal,
+      modal: onOff,
       type: target.name ? target.name : "custom"
     });
   }
 
   _onSubmit = (e) => {
     e.preventDefault();
+    console.log(this.state.start);
+    
     let newActivity = {trip_id: this.props.trip_id}
     for (let key in this.state) {
       if (key !== "modal" && (this.state[key] > 0 || ((typeof this.state[key] === "string") && this.state[key].trim().length))) {
@@ -56,6 +59,8 @@ class AddActivityModal extends Component {
   }
 
   _onChange = ({target}) => {
+    console.log(target);
+    
     this.setState({[target.name]: target.value})
   }
 
@@ -63,21 +68,21 @@ class AddActivityModal extends Component {
     return (
       <Row>
         <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={this.toggle} name="flight">Add Flight</Button>
+          <Button onClick={(e) => this.toggle(e, true)} name="flight">Add Flight</Button>
         </Col>
         <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={this.toggle} name="hotel">Add Hotel</Button>
+          <Button onClick={(e) => this.toggle(e, true)} name="hotel">Add Hotel</Button>
         </Col>
         <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={this.toggle} name="car">Add Rental Car</Button>
+          <Button onClick={(e) => this.toggle(e, true)} name="car">Add Rental Car</Button>
         </Col>
         <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={this.toggle} name="business">Add Business Meeting</Button>
+          <Button onClick={(e) => this.toggle(e, true)} name="business">Add Business Meeting</Button>
         </Col>
         <Col style={{display: "flex", justifyContent: "center"}}>
-          <Button onClick={this.toggle} name="custom">Add Custom</Button>
+          <Button onClick={(e) => this.toggle(e, true)} name="custom">Add Custom</Button>
         </Col>
-        <Modal isOpen={this.state.modal} toggle={this.toggle} >
+        <Modal zIndex={10} isOpen={this.state.modal} toggle={() => null} >
           <ModalHeader toggle={this.toggle}>Add {this.state.type.substring(0, 1).toUpperCase() + this.state.type.substring(1)}</ModalHeader>
           <ModalBody>
             <Form>
@@ -93,11 +98,11 @@ class AddActivityModal extends Component {
               <FormGroup>
                 <span style={style}>*</span>
                 <Label for="start">Starting date and time</Label>
-                <Input onChange={this._onChange} value={this.state.start} name="start" type='datetime-local' placeholder='Start' />
+                <CalendarPicker name="start" onChange={this._onChange} />
               </FormGroup>
               <FormGroup>
                 <Label for="ens">Ending date and time</Label>
-                <Input onChange={this._onChange} value={this.state.end} name="end" type='datetime-local' placeholder='End' />
+                <CalendarPicker name="end" onChange={this._onChange} />
               </FormGroup>
               <FormGroup>
                 <Label for="price">Price</Label>
