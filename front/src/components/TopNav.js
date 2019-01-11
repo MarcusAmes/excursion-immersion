@@ -9,7 +9,7 @@ import {
   FormGroup,
   Col
 } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import UserBubbleContainer from '../containers/UserBubbleContainer';
 
 class TopNav extends Component{
@@ -56,4 +56,4 @@ class TopNav extends Component{
   }
 }
 
-export default TopNav
+export default withRouter(TopNav)

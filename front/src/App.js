@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div style={{height: "100vh", fontSize: "12pt"}} className="App">
-        <Route path='/' component={TopNavContainer} />
+        <TopNavContainer />
         <Switch>
           <Route exact path='/' component={Splash} />
           <Route path='/register' component={RegisterContainer} />
