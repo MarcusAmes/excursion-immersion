@@ -36,7 +36,7 @@ exports.seed = function(knex, Promise) {
           start: '2019-01-15T20:00:00-07:00',
           end: '2019-01-16T01:30:00-07:00',
           address: '707 E Carson Ave, Las Vegas, NV 89101',
-          price: 750
+          price: 500
         },
         {
           trip_id: 1,
