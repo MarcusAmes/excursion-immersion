@@ -11,6 +11,7 @@ import moment from 'moment'
 import { Pie } from 'react-chartjs-2'
 import { Redirect } from 'react-router-dom'
 import Activity from './Activity';
+import EditButtonContainer from '../containers/EditButtonContainer';
 
 class ViewTrip extends Component {
   componentDidMount() {
@@ -59,7 +60,13 @@ class ViewTrip extends Component {
       }
     }
 
-    const notes = this.props.notes.map(note => <ListGroupItem key={note.id}> {note.note} </ListGroupItem>)
+    const notes = this.props.notes.map(note => 
+      <ListGroupItem key={note.id}>
+        <div style={{display: "flex", justifyContent: "space-between"}}>
+          {note.note}
+          <EditButtonContainer id={note.id} type="note"/>
+        </div>
+      </ListGroupItem>)
     return (
       <Container>
         <div style={{textAlign: "center", marginBottom: "10px", marginTop: "10px"}}>
@@ -79,9 +86,12 @@ class ViewTrip extends Component {
               <AddActivityModalContainer trip_id={this.props.match.params.id} />
             </div>
             <Pie data={data} width={100} height={100}/>
-            <ListGroup>
-              {notes}
-            </ListGroup>
+            <div>
+              Notes:
+              <ListGroup>
+                {notes}
+              </ListGroup>
+            </div>
           </Col>
         </Row>
       </Container>

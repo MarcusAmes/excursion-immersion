@@ -2,12 +2,6 @@ import { connect } from 'react-redux'
 import AddActivityModal from '../components/AddActivityModal';
 import { addActivity } from '../actions/activityActions';
 
-const mapStateToProps = state => {
-  return {
-    
-  }
-}
-
 const mapDispatchToProps = dispatch => {
   return {
     addActivity: (activity) => {
@@ -18,4 +12,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddActivityModal)
+export default connect(null, mapDispatchToProps)(AddActivityModal)
