@@ -80,7 +80,7 @@ class AddTripModal extends Component {
   render() {
     return (
       <div>
-        <Button style={{borderRadius: "4px", width: "310px", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "1.2em"}} color="danger" onClick={this.toggle}>
+        <Button style={{borderTopRightRadius: "0px", borderTopLeftRadius: "0px", width: "100%", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "1.2em"}} color="danger" onClick={this.toggle}>
           Add Trip
           <FaPlusSquare style={{marginLeft: "10px"}} size="1.5em"/>
         </Button>
