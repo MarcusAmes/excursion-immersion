@@ -3,15 +3,14 @@ import {
   Row,
   Container,
   Col,
-  ListGroup,
-  ListGroupItem
+  ListGroup
 } from 'reactstrap'
 import AddActivityModalContainer from '../containers/AddActivityModalContainer';
 import moment from 'moment'
 import { Pie } from 'react-chartjs-2'
 import { Redirect } from 'react-router-dom'
 import Activity from './Activity';
-import EditButtonContainer from '../containers/EditButtonContainer';
+import Notes from './Notes';
 
 class ViewTrip extends Component {
   componentDidMount() {
@@ -60,13 +59,6 @@ class ViewTrip extends Component {
       }
     }
 
-    const notes = this.props.notes.map(note => 
-      <ListGroupItem key={note.id}>
-        <div style={{display: "flex", justifyContent: "space-between"}}>
-          {note.note}
-          <EditButtonContainer id={note.id} type="note"/>
-        </div>
-      </ListGroupItem>)
     return (
       <Container>
         <div style={{textAlign: "center", marginBottom: "10px", marginTop: "10px"}}>
@@ -76,7 +68,7 @@ class ViewTrip extends Component {
         </div>
 
         <Row>
-          <Col style={{padding: "10px", height: "65vh", overflow: "auto"}} xl="8">
+          <Col style={{padding: "10px", height: "68vh", overflow: "auto"}} xl="8">
             <ListGroup>
               {ActivityList}
             </ListGroup>
@@ -85,13 +77,10 @@ class ViewTrip extends Component {
             <div style={{display: "flex", justifyContent: "center", marginBottom: "20px", marginTop: "10px"}}>
               <AddActivityModalContainer trip_id={this.props.match.params.id} />
             </div>
-            <Pie data={data} width={100} height={100}/>
-            <div>
-              Notes:
-              <ListGroup>
-                {notes}
-              </ListGroup>
+            <div style={{display: "flex", justifyContent: "center", marginBottom: "20px", marginTop: "10px"}}>
+              <Notes id={trip.id} notes={this.props.notes}/>
             </div>
+            <Pie data={data} width={100} height={100}/>
           </Col>
         </Row>
       </Container>
