@@ -13,6 +13,7 @@ import {
 } from 'reactstrap';
 import fetchJsonp from 'fetch-jsonp'
 import AutoComplete from 'react-autocomplete'
+import { FaPlusSquare } from "react-icons/fa";
 
 const style = {
   color: "red"
@@ -79,7 +80,10 @@ class AddTripModal extends Component {
   render() {
     return (
       <div>
-        <Button style={{width: "100%", fontSize: "1.3em", borderTopLeftRadius: "0", borderTopRightRadius: "0"}} color="danger" onClick={this.toggle}>Add Trip</Button>
+        <Button style={{borderRadius: "4px", width: "310px", display: "flex", justifyContent: "center", alignItems: "center", fontSize: "1.2em"}} color="danger" onClick={this.toggle}>
+          Add Trip
+          <FaPlusSquare style={{marginLeft: "10px"}} size="1.5em"/>
+        </Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} >
           <ModalHeader toggle={this.toggle}>Add Trip</ModalHeader>
           <ModalBody>
